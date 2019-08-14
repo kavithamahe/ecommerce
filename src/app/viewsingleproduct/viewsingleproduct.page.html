@@ -1,0 +1,54 @@
+<ion-header no-border-bottom>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Ctlkart</ion-title>
+    <ion-buttons slot="end" (click)="viewcart()">
+      <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+    <ion-badge id="cart-badge" color="danger">{{cartcount}}</ion-badge>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor = "let single of getsingleProductList">
+    <img [src]="imgURl + single.product_image"/>
+    <ion-card-header>
+      <ion-card-title>{{single.product_name}}</ion-card-title>
+      <ion-card-subtitle style= "font-weight:800;"><i class="fa fa-inr"></i>{{single.price | number : '1.2-2'}}</ion-card-subtitle>
+    </ion-card-header>
+    
+    <!-- <ion-item>
+      <ion-label>Quantity</ion-label>
+      <ion-select [(ngModel)] = "quantitycount.quantity">
+        <ion-select-option *ngFor = "let quantity of quantities" value="{{quantity}}" selected="1">{{quantity}}</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+    <ion-item>
+      <button clear (click)="decrementQty()"><ion-icon name="remove-circle" ></ion-icon></button>{{item_qty}}
+       <button clear (click)="incrementQty()"><ion-icon name="add-circle" ></ion-icon></button>
+   </ion-item>
+    <!-- <div style="padding:10px;">
+    <ion-button color="warning" shape="round"  expand="block" (click)="buyNow(single.id,quantitycount.quantity)">Buy Now</ion-button>
+    <ion-button color="light" shape="round"  expand="block" (click)="addproductTocart(single.id,quantitycount.quantity,single.price)">Add To Cart</ion-button>
+  
+    </div> -->
+    <ion-card-content>
+     {{single.product_description}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-toolbar>
+  <ion-segment *ngFor = "let single of getsingleProductList">
+    <ion-segment-button *ngIf ="!gotocart" value="all" (click)="addproductTocart(single.id,item_qty,single.price)">
+      Add Cart
+    </ion-segment-button>
+    <ion-segment-button *ngIf ="gotocart" value="all" (click)="gotocartpage()">
+     Go To Cart
+    </ion-segment-button>
+    <ion-segment-button value="favorites" checked (click)="buyNow(single.id,item_qty)">
+      Buy Now
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>

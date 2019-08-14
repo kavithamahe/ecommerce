@@ -1,0 +1,133 @@
+<ion-header no-border-bottom>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+      <ion-title>Ctlkart</ion-title>
+      <ion-buttons slot="end" (click)="viewcart()">
+        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+      <ion-badge id="cart-badge" color="danger">{{cartcount}}</ion-badge>
+    </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size = "12">
+        <ion-list >
+            <ion-radio-group>
+              <ion-list-header>
+                <ion-label>Delivery Address</ion-label>
+              </ion-list-header>
+              <ion-item *ngFor = "let address of getalladdress">
+                <ion-label style="white-space: normal !important;">{{address.first_name}},{{address.address}},{{address.city}},{{address.state}}</ion-label>
+                <ion-radio (ionSelect)="radioSelects($event,address.id)" slot="start" value="{{address.first_name}},{{address.address}},{{address.city}},{{address.state}}" ></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+       
+
+    <div class="ion-padding">
+        <ion-button expand="block" (click)="addAddress()" class="ion-no-margin">Add Address</ion-button>
+    </div>
+    <form [formGroup]="checkoutForm" *ngIf = "addaddress">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-label position="stacked">First Name <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="first_name" required type="text"></ion-input>
+        </ion-item>
+            <p *ngIf="!checkoutForm.controls.first_name.valid && (checkoutForm.controls.first_name.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+
+        <ion-item>
+          <ion-label position="stacked">Last Name <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" formControlName="last_name"></ion-input>
+        </ion-item>
+        <p *ngIf="!checkoutForm.controls.last_name.valid && (checkoutForm.controls.last_name.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+        <ion-item>
+            <ion-label position="stacked">Email <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="email"  formControlName="email"></ion-input>
+        </ion-item>
+         <p *ngIf="!checkoutForm.controls.email.valid && (checkoutForm.controls.email.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+        
+        <ion-item>
+            <ion-label position="stacked">Mobile Number<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="number" formControlName="mobilenumber"></ion-input>
+        </ion-item>
+        <p *ngIf="!checkoutForm.controls.mobilenumber.valid && (checkoutForm.controls.mobilenumber.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+
+        <ion-item>
+          <ion-label position="stacked">Address<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="address"></ion-input>
+          </ion-item>
+          <p *ngIf="!checkoutForm.controls.address.valid && (checkoutForm.controls.address.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+          <ion-item>
+              <ion-label position="stacked">Landmark</ion-label>
+              <ion-input formControlName="landmark"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label position="stacked">City<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="city"></ion-input>
+          </ion-item>
+          <p *ngIf="!checkoutForm.controls.city.valid && (checkoutForm.controls.city.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+          <ion-item>
+              <ion-label position="stacked">State<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="state"></ion-input>
+          </ion-item>
+          <p *ngIf="!checkoutForm.controls.state.valid && (checkoutForm.controls.state.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+          <ion-item>
+              <ion-label position="stacked">Zipcode<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="zipcode"></ion-input>
+          <p *ngIf="!checkoutForm.controls.zipcode.valid && (checkoutForm.controls.zipcode.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+        </ion-item>
+      </ion-list>
+      </form>
+      <div class="ion-padding" *ngIf = "addaddress">
+        <ion-item>
+            <ion-button expand="block" (click)="cancel()" class="ion-no-margin">Cancel</ion-button>
+            <ion-button expand="block" (click)="submitaddress()" class="ion-no-margin">Save And Deliver Here</ion-button>
+        </ion-item>
+      </div>
+      <div *ngFor = "let single of getsingleProductList">
+          <ion-list-header>
+              <ion-label>Order Summary Details</ion-label>
+            </ion-list-header>
+        <ion-item>
+            <ion-thumbnail slot="start">
+              <img [src]="imageUrl + single.product_image">
+            </ion-thumbnail>
+              <ion-label>
+                <h3>{{single.product_name}}</h3>
+                <p><i class="fa fa-inr"></i>{{totalprice | number : '1.2-2'}}</p>
+              </ion-label>
+        </ion-item>
+        <ion-item>
+           <button clear (click)="decrementQty()"><ion-icon name="remove-circle" ></ion-icon></button>{{item_qty}}
+            <button clear (click)="incrementQty()"><ion-icon name="add-circle" ></ion-icon></button>
+        </ion-item>
+       
+        <ion-list>
+            <ion-item>
+              <ion-label style="white-space: normal !important;">Cash on delivery</ion-label>
+              <ion-radio slot="start" value="biff" checked></ion-radio>
+            </ion-item>
+        </ion-list>
+        <div class="ion-padding">
+          <ion-button expand="block" (click)="proceedtobuy(single.id)" class="ion-no-margin">Proceed to buy</ion-button>
+        </div>
+      </div>
+      <div *ngIf = "fromcart == '1'">
+      <ion-list>
+        <ion-item>
+          <ion-label style="white-space: normal !important;">Cash on delivery</ion-label>
+          <ion-radio slot="start" value="biff" checked></ion-radio>
+        </ion-item>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button expand="block" (click)="proceedtobuycart()" class="ion-no-margin">Proceed to buy</ion-button>
+    </div>
+    </div>
+</ion-content>

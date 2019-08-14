@@ -1,0 +1,71 @@
+<ion-header no-border-bottom>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+      <ion-title>Ctlkart</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <form [formGroup]="registerForm">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-label position="stacked">First Name <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="firstname" required type="text"></ion-input>
+        </ion-item>
+            <p *ngIf="!registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+
+        <ion-item>
+          <ion-label position="stacked">Last Name <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" formControlName="lastname"></ion-input>
+        </ion-item>
+        <p *ngIf="!registerForm.controls.lastname.valid && (registerForm.controls.lastname.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+        <ion-item>
+            <ion-label position="stacked">Email <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="email"  formControlName="email"></ion-input>
+        </ion-item>
+         <p *ngIf="!registerForm.controls.email.valid && (registerForm.controls.email.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+        
+
+        <ion-item>
+            <ion-label>Gender</ion-label>
+            <ion-select formControlName="gender">
+              <ion-select-option value="male">Male</ion-select-option>
+              <ion-select-option value="female">Female</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <p *ngIf="!registerForm.controls.gender.valid && (registerForm.controls.gender.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+
+        <ion-item>
+            <ion-label position="stacked">Mobile Number<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="number" formControlName="mobile"></ion-input>
+        </ion-item>
+        <p *ngIf="!registerForm.controls.mobile.valid && (registerForm.controls.mobile.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+
+        <ion-item>
+          <ion-label position="stacked">Address</ion-label>
+          <ion-input placeholder="Address Line 1" formControlName="addressline1"></ion-input>
+          <p *ngIf="!registerForm.controls.addressline1.valid && (registerForm.controls.addressline1.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+          <ion-input placeholder="Address Line 2" formControlName="addressline2"></ion-input>
+          <p *ngIf="!registerForm.controls.addressline2.valid && (registerForm.controls.addressline2.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+          <ion-input placeholder="City" formControlName="city"></ion-input>
+          <p *ngIf="!registerForm.controls.city.valid && (registerForm.controls.city.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+          <ion-input placeholder="State" formControlName="state"></ion-input>
+          <p *ngIf="!registerForm.controls.state.valid && (registerForm.controls.state.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+          <ion-input placeholder="Zip Code" formControlName="zipcode"></ion-input>
+          <p *ngIf="!registerForm.controls.zipcode.valid && (registerForm.controls.zipcode.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Password<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <p *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+
+      </ion-list>
+      </form>
+      <div class="ion-padding">
+        <ion-button expand="block" (click)="submit()" class="ion-no-margin">Create account</ion-button>
+      </div>
+</ion-content>

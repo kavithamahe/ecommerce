@@ -1,0 +1,62 @@
+<ion-header no-border-bottom>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+      <ion-title>Ctlkart</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+  <ion-grid *ngIf = "type == 'personnal'">
+    <ion-row style="border: 2px solid #d1af7b;">
+      <ion-col size="9">
+        <ion-input value="{{name}}" *ngIf = "param == 'name'" [(ngModel)] = "profile.name"></ion-input>
+        <ion-input value="{{email}}" *ngIf = "param == 'email'" [(ngModel)] = "profile.email"></ion-input>
+        <ion-input value="{{mobile}}" *ngIf = "param == 'mobile'" [(ngModel)] = "profile.mobile"></ion-input>
+      </ion-col>
+      <ion-col size="3">
+          <button style="padding:15px;" (click)="editprofile()">
+              <ion-ripple-effect></ion-ripple-effect>
+              Submit
+          </button>
+      </ion-col>
+    </ion-row>
+    <br>
+  </ion-grid>
+  <div *ngIf = "type == 'address'">
+    <div style="border: 2px solid #d1af7b;">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-item>
+              <ion-label position="stacked">Address <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input value="{{getaddress.address}}"  [(ngModel)] = "addresss.address" type="text" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Landmark <ion-text color="danger">*</ion-text></ion-label>
+                <ion-input value="{{getaddress.landmark}}" [(ngModel)] = "addresss.landmark" type="text" ></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="stacked">City <ion-text color="danger">*</ion-text></ion-label>
+                  <ion-input value="{{getaddress.city}}" [(ngModel)] = "addresss.city" type="text" ></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="stacked">State <ion-text color="danger">*</ion-text></ion-label>
+                    <ion-input value="{{getaddress.state}}" [(ngModel)] = "addresss.state" type="text" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label position="stacked">Zipcode <ion-text color="danger">*</ion-text></ion-label>
+                      <ion-input value="{{getaddress.zipcode}}" [(ngModel)] = "addresss.zipcode" type="text" ></ion-input>
+                    </ion-item>
+
+        </ion-list>
+         
+  
+    <button style="padding:15px;" (click)="editaddress(getaddress.id)">
+      <ion-ripple-effect></ion-ripple-effect>
+      Submit
+  </button>
+</div>
+    <br>
+  </div>
+   
+</ion-content>

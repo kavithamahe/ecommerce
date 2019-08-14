@@ -1,0 +1,23 @@
+<ion-header no-border-bottom>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Ctlkart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding">
+      <ion-item>
+        <ion-input class= "currentpassword" type="text" placeholder="Current Password" [(ngModel)]="password.currentpassword"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input class= "newpassword" type="text" placeholder="New Password" [(ngModel)]="password.newpassword"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input class= "confirmpassword" type="text" placeholder="Confirm New Password" [(ngModel)]="password.confirmpassword"></ion-input>
+      </ion-item>
+      <ion-button (click)="changePassword()">Submit</ion-button>
+    </div>
+</ion-content>

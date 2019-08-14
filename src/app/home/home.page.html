@@ -1,14 +1,10 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+
+<ion-content class="main-Dashboard">
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-item class= "otpinputitem">
+      <ion-input class= "otpinput" type="text" placeholder="mobile otp" [(ngModel)]="employee.mobileotp"></ion-input>
+    </ion-item>
+    <ion-button (click)="otpsend(employee.mobileotp)">Submit</ion-button>
   </div>
 </ion-content>

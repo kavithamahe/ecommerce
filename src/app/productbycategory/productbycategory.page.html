@@ -1,0 +1,42 @@
+<ion-header no-border-bottom>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+      <ion-title>Ctlkart</ion-title>
+      <ion-buttons slot="end" (click)="viewcart()">
+        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+      <ion-badge id="cart-badge" color="danger">{{cartcount}}</ion-badge>
+    </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-item>
+            <ion-label>Sort By</ion-label>
+            <ion-select [(ngModel)] = "sortby.level" (ionChange)="sorybyvalue(sortby.level)">
+              <ion-select-option value="low to high">Low to High</ion-select-option>
+              <ion-select-option value="high to low">High to Low</ion-select-option>
+            </ion-select>
+          </ion-item>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <ion-slides [options]="sliderConfig" class="category">
+            <ion-slide *ngFor = "let subcategory of getallsubcategory">
+                <p (click)="filterbySubategory(subcategory.id)">{{subcategory.subcategory_name}}</p>
+            </ion-slide>
+        </ion-slides>
+    </div>
+    <div>
+        <ion-grid>
+            <ion-row>
+                <ion-col size = "6" *ngFor = "let product of getProductLists">
+                  <img [src]="imgURl + product.product_image" (click)="viewsingleproduct(product.id)" /> 
+                  <ion-label (click)="viewsingleproduct(product.id)">{{product.product_name}}</ion-label>
+                  <p (click)="viewsingleproduct(product.id)"><i class="fa fa-inr"></i>{{product.price | number : '1.2-2'}}</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

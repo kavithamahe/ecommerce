@@ -1,0 +1,26 @@
+<ion-header no-border-bottom>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Ctlkart</ion-title>
+    <ion-buttons slot="end" (click)="viewcart()">
+      <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+    <ion-badge id="cart-badge" color="danger">{{cartcount}}</ion-badge>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor = "let order of getallmyorderlists">
+    <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="imageUrl + order.product_image">
+        </ion-thumbnail>
+          <ion-label>
+            <h3>{{order.product_name}}</h3>
+            <p><i class="fa fa-inr"></i>{{order.amount | number : '1.2-2'}}</p>
+          </ion-label>
+    </ion-item>
+    </div>
+</ion-content>

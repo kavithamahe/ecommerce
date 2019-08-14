@@ -4,3 +4,23 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+.otpinputitem{
+    padding-top: 250px;
+}
+.otpinput{
+    border: 2px solid #e6e8e7;
+    border-radius: 25px;
+    padding-left: 10px;
+}
+.headcolor{
+    --background: #1a53ff;
+   }
+ion-title{
+ padding-left: 100px;
+}
+.category{
+    background-color:#68829e !important;
+}
+.main-Dashboard{
+    --background: url('./../assets/img/image.jpg');
+}

@@ -1,0 +1,23 @@
+<ion-header no-border-bottom>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Ctlkart</ion-title>
+    <ion-buttons slot="end" (click)="viewcart()">
+      <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+    <ion-badge id="cart-badge" color="danger">{{cartcount}}</ion-badge>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list *ngFor = "let category of getallcategories">
+        <ion-item (click) = "getsubcategory(category.category_id)">
+            <ion-avatar slot="start">
+                <img [src]="imgURl + category.category_image" />
+            </ion-avatar>
+          <ion-label>{{category.category_name}}</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

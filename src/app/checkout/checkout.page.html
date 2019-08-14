@@ -1,0 +1,47 @@
+<ion-header no-border-bottom>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Ctlkart</ion-title>
+    <ion-buttons slot="end" (click)="viewcart()">
+      <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+    <ion-badge id="cart-badge" color="danger">{{cartcount}}</ion-badge>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div style="padding:10px;">
+        <form [formGroup]="loginForm">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-item>
+              <ion-label position="stacked">Email<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input formControlName="email" required type="email"></ion-input>
+            </ion-item>
+                <p *ngIf="!loginForm.controls.email.valid && (loginForm.controls.email.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+            <ion-item>
+              <ion-label position="stacked">Password<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required type="password" formControlName="password"></ion-input>
+            </ion-item>
+             <p *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt)" class="err-reds shake">Please enter name.</p>
+        </ion-list>
+        </form>
+    </div>
+    <div style="padding:10px;">
+        <ion-button color="light" shape="round"  expand="block" (click)="login()">Login</ion-button>
+        <ion-button color="warning" shape="round"  expand="block" (click)="register()">Register Now</ion-button>
+        <ion-button color="warning" shape="round"  expand="block" (click)="forgetpassword()">Forget Password</ion-button>
+    </div>
+    <div *ngIf = "numberverify">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Mobile Number<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input [(ngModel)]="verify.mobile" required type="text"></ion-input>
+          <ion-button color="light" shape="round"  expand="block" (click)="verifynumber(verify.mobile)">Verify Number</ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+
+</ion-content>

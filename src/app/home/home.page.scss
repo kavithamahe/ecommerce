@@ -1,1 +1,13 @@
-
+app-home{
+    .otpinputitem{
+        padding-top: 250px;
+    }
+    .otpinput{
+        border-radius: 25px;
+        border: 2px solid #e6e8e7;
+        padding-left: 10px
+    }
+    .main-Dashboard{
+        --background: url('../../assets/img/images.jpg');
+    }
+}
