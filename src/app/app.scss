@@ -24,3 +24,39 @@ ion-title{
 .main-Dashboard{
     --background: url('./../assets/img/image.jpg');
 }
+.ion-searchbar {
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 30px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+    height: 52px;
+    ion-col {
+        padding: 0;
+        ion-searchbar {
+            padding: 4px 0px 4px 4px;
+            background: inherit;
+            border:none;
+            .searchbar-input {
+                border: none;
+                letter-spacing: 0.4px;
+            }
+        }
+        &.btn-go {
+            .go-btn {
+                margin: 6px 0px 0px 0px !important;
+                height: 40px !important;
+                border-radius: 30px !important;
+                width: 90% !important;
+                background-color: #4978a9 !important;
+            }
+        }
+        &.width-80{
+            flex: 0 0 80%;
+            max-width: 80%;
+        }
+        &.width-20{
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+    }
+}

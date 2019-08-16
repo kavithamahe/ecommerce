@@ -9,8 +9,8 @@
         <ion-badge id="cart-badge" color="danger">{{cartcount}}</ion-badge>
       </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar>
-      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-toolbar class = "ion-searchbar">
+      <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
       <!-- <ion-searchbar [(ngModel)]="term.searchText" (keyup.enter)="getItems(term.searchText)"></ion-searchbar> -->
   </ion-toolbar>
 </ion-header>
