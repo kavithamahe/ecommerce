@@ -12,12 +12,12 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list *ngFor = "let category of getallcategories">
+    <div *ngFor = "let category of getallcategories">
         <ion-item (click) = "getsubcategory(category.category_id)">
             <ion-avatar slot="start">
                 <img [src]="imgURl + category.category_image" />
             </ion-avatar>
           <ion-label>{{category.category_name}}</ion-label>
         </ion-item>
-    </ion-list>
+    </div>
 </ion-content>
